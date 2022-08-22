@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { FeedbackBtnList } from './FeedbackBtnList/FeedbackBtnList';
 import { Section } from './Section/Section';
 import { StatisticsList } from './Statistics/StatisticsList';
+import { Notification } from './Notification/Notification';
 
 export class App extends Component {
   state = {
@@ -35,17 +36,17 @@ export class App extends Component {
           ></FeedbackBtnList>
         </Section>
         <Section title={'Statistics'}>
-          <StatisticsList
-            stats={this.state}
-            countTotal={this.countTotalFeedback()}
-            countPositive={this.countPositiveFeedbackPercentage()}
-          />
+          {this.countTotalFeedback() > 0 ? (
+            <StatisticsList
+              stats={this.state}
+              countTotal={this.countTotalFeedback()}
+              countPositive={this.countPositiveFeedbackPercentage()}
+            />
+          ) : (
+            <Notification message={'There is no feedback yet'}></Notification>
+          )}
         </Section>
       </>
     );
   }
 }
-
-// /* <Title text={'Leave a feedback'} />; */
-
-// <StatisticsTitle text={'Statistics'} />;
