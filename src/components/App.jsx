@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Title } from './Title/Title';
 import { FeedbackBtnList } from './FeedbackBtnList/FeedbackBtnList';
 import { StatisticsList } from './Statistics/StatisticsList';
-import { StatisticsTitle } from './Statistics/StattisticsTitle/StatisticsTitle';
+import { StatisticsTitle } from './Statistics/StatisticsTitle/StatisticsTitle';
 
 export class App extends Component {
   state = {
@@ -16,6 +16,16 @@ export class App extends Component {
     this.setState(prevState => ({ [currentBtn]: prevState[currentBtn] + 1 }));
   };
 
+  countTotalFeedback = () =>
+    Object.values(this.state).reduce((total, feedback) => total + feedback);
+
+  countPositiveFeedbackPercentage = () => {
+    const { good } = this.state;
+    const total = this.countTotalFeedback();
+    const result = good / total;
+    return Math.round(result * 100);
+  };
+
   render() {
     return (
       <>
@@ -25,7 +35,11 @@ export class App extends Component {
           onClick={this.handleCurrentBtnClick}
         ></FeedbackBtnList>
         <StatisticsTitle text={'Statistics'} />
-        <StatisticsList stats={this.state} />
+        <StatisticsList
+          stats={this.state}
+          countTotal={this.countTotalFeedback()}
+          countPositive={this.countPositiveFeedbackPercentage()}
+        />
       </>
     );
   }
