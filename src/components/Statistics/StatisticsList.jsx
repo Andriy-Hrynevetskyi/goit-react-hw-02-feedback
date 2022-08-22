@@ -10,11 +10,13 @@ export const StatisticsList = ({ stats, countTotal, countPositive }) => (
         </li>
       ))}
     </ul>
-    <p>Total: {countTotal}</p>
+    {countTotal ? <p>Total: {countTotal}</p> : ''}
     {countPositive ? <p>Positive Feedback: {countPositive} %</p> : ''}
   </>
 );
 
 StatisticsList.propTypes = {
   stats: PropTypes.object.isRequired,
+  countTotal: PropTypes.func.isRequired,
+  countPositive: PropTypes.func.isRequired,
 };

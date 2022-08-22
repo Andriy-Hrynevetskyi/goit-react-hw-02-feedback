@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Title } from './Title/Title';
 import { FeedbackBtnList } from './FeedbackBtnList/FeedbackBtnList';
+import { Section } from './Section/Section';
 import { StatisticsList } from './Statistics/StatisticsList';
-import { StatisticsTitle } from './Statistics/StatisticsTitle/StatisticsTitle';
 
 export class App extends Component {
   state = {
@@ -29,18 +28,24 @@ export class App extends Component {
   render() {
     return (
       <>
-        <Title text={'Leave a feedback'} />
-        <FeedbackBtnList
-          buttons={Object.keys(this.state)}
-          onClick={this.handleCurrentBtnClick}
-        ></FeedbackBtnList>
-        <StatisticsTitle text={'Statistics'} />
-        <StatisticsList
-          stats={this.state}
-          countTotal={this.countTotalFeedback()}
-          countPositive={this.countPositiveFeedbackPercentage()}
-        />
+        <Section title={'Leave feedback'}>
+          <FeedbackBtnList
+            buttons={Object.keys(this.state)}
+            onClick={this.handleCurrentBtnClick}
+          ></FeedbackBtnList>
+        </Section>
+        <Section title={'Statistics'}>
+          <StatisticsList
+            stats={this.state}
+            countTotal={this.countTotalFeedback()}
+            countPositive={this.countPositiveFeedbackPercentage()}
+          />
+        </Section>
       </>
     );
   }
 }
+
+// /* <Title text={'Leave a feedback'} />; */
+
+// <StatisticsTitle text={'Statistics'} />;
