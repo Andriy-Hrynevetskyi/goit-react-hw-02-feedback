@@ -1,22 +1,34 @@
 import PropTypes from 'prop-types';
 import { StatisticItem } from './StatisticItem/StatisticItem';
+import {
+  StatistickListItem,
+  StatisticTotal,
+  StatisticList,
+  TotalStatsWrapper,
+} from './StatisticList.styled';
 
 export const StatisticsList = ({ stats, countTotal, countPositive }) => (
   <>
-    <ul>
+    <StatisticList>
       {Object.keys(stats).map(el => (
-        <li key={el}>
+        <StatistickListItem key={el}>
           <StatisticItem name={el} value={stats[el]} />
-        </li>
+        </StatistickListItem>
       ))}
-    </ul>
-    {countTotal ? <p>Total: {countTotal}</p> : ''}
-    {countPositive ? <p>Positive Feedback: {countPositive} %</p> : ''}
+    </StatisticList>
+    <TotalStatsWrapper>
+      {countTotal && <StatisticTotal>Total: {countTotal}</StatisticTotal>}
+      {countPositive ? (
+        <StatisticTotal>Positive Feedback: {countPositive} %</StatisticTotal>
+      ) : (
+        ''
+      )}
+    </TotalStatsWrapper>
   </>
 );
 
 StatisticsList.propTypes = {
   stats: PropTypes.object.isRequired,
-  countTotal: PropTypes.func.isRequired,
-  countPositive: PropTypes.func.isRequired,
+  countTotal: PropTypes.number,
+  countPositive: PropTypes.number,
 };

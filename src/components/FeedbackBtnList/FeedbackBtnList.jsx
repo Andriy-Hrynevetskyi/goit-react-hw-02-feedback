@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types';
 import { FeedbackBtn } from './FeedbackBtn/FeedbackBtn';
-
+import { List, ListItem } from './FeedbackBtnList.styled';
 export const FeedbackBtnList = ({ buttons, onClick }) => (
-  <ul>
+  <List>
     {buttons.map(button => (
-      <li key={button}>
+      <ListItem key={button}>
         <FeedbackBtn text={button} onClick={onClick} />
-      </li>
+      </ListItem>
     ))}
-  </ul>
+  </List>
 );
 
 FeedbackBtnList.protoTypes = {

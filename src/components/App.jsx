@@ -3,6 +3,7 @@ import { FeedbackBtnList } from './FeedbackBtnList/FeedbackBtnList';
 import { Section } from './Section/Section';
 import { StatisticsList } from './Statistics/StatisticsList';
 import { Notification } from './Notification/Notification';
+import { AppWrapper } from './App.stylerd';
 
 export class App extends Component {
   state = {
@@ -28,7 +29,7 @@ export class App extends Component {
 
   render() {
     return (
-      <>
+      <AppWrapper>
         <Section title={'Leave feedback'}>
           <FeedbackBtnList
             buttons={Object.keys(this.state)}
@@ -46,7 +47,7 @@ export class App extends Component {
             <Notification message={'There is no feedback yet'}></Notification>
           )}
         </Section>
-      </>
+      </AppWrapper>
     );
   }
 }

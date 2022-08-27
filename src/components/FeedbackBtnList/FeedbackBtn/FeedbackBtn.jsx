@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
+import { FeedbackButton } from './FeedbackBtn.styled';
 
 export const FeedbackBtn = ({ text, onClick }) => (
-  <button type="button" onClick={onClick}>
+  <FeedbackButton type="button" onClick={onClick}>
     {text}
-  </button>
+  </FeedbackButton>
 );
 
 FeedbackBtn.propTypes = {
