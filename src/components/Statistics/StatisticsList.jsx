@@ -4,11 +4,11 @@ import {
   StatistickListItem,
   StatisticTotal,
   StatisticList,
-  TotalStatsWrapper,
+  StatisticWrapper,
 } from './StatisticList.styled';
 
 export const StatisticsList = ({ stats, countTotal, countPositive }) => (
-  <>
+  <StatisticWrapper>
     <StatisticList>
       {Object.keys(stats).map(el => (
         <StatistickListItem key={el}>
@@ -16,15 +16,13 @@ export const StatisticsList = ({ stats, countTotal, countPositive }) => (
         </StatistickListItem>
       ))}
     </StatisticList>
-    <TotalStatsWrapper>
-      {countTotal && <StatisticTotal>Total: {countTotal}</StatisticTotal>}
-      {countPositive ? (
-        <StatisticTotal>Positive Feedback: {countPositive} %</StatisticTotal>
-      ) : (
-        ''
-      )}
-    </TotalStatsWrapper>
-  </>
+    {countTotal && <StatisticTotal>Total: {countTotal}</StatisticTotal>}
+    {countPositive ? (
+      <StatisticTotal>Positive Feedback: {countPositive}%</StatisticTotal>
+    ) : (
+      ''
+    )}
+  </StatisticWrapper>
 );
 
 StatisticsList.propTypes = {

@@ -1,13 +1,17 @@
 import styled from 'styled-components';
 
+export const StatisticWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 export const StatisticList = styled.ul`
-  margin-bottom: 24px;
+  margin-bottom: 8px;
 `;
 
 export const StatistickListItem = styled.li`
-  font-size: 20px;
   &:not(:last-child) {
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
 
   &::first-letter {
@@ -16,16 +20,10 @@ export const StatistickListItem = styled.li`
 `;
 
 export const StatisticTotal = styled.p`
-  padding: 4px;
-  font-size: 20px;
+  font-size: 16px;
+  margin-bottom: 8px;
 
   &::first-letter {
     text-transform: capitalize;
   }
-`;
-
-export const TotalStatsWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 `;

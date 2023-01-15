@@ -30,7 +30,7 @@ export class App extends Component {
   render() {
     return (
       <AppWrapper>
-        <Section title={'Leave feedback'}>
+        <Section title={'Leave feedback'} paddingBot={false}>
           <FeedbackBtnList
             buttons={Object.keys(this.state)}
             onClick={this.handleCurrentBtnClick}
